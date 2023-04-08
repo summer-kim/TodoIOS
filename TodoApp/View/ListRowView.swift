@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    var todoTitle: String = ""
-    
+    var todo: ItemModel
+
     var body: some View {
         HStack{
-            Text(todoTitle)
+            Text(todo.title)
             Spacer()
-            Image(systemName: "heart")
-
+            Image(systemName: todo.solved ? "heart.fill" : "heart")
+                .foregroundColor(todo.solved ? Color("heartColor") : nil)
         }.padding(.vertical, 10)
        
     }
@@ -24,6 +24,12 @@ struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView()
+        Group{
+            ListRowView(todo: ItemModel(title: "This is firstTodo"))
+            ListRowView(todo: ItemModel(title: "This is secondTodo"))
+        }
+       // .previewLayout(.sizeThatFits)
+
+        
     }
 }

@@ -9,17 +9,20 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var todos: [String] = ["What is your goal?", "Let's Write"]
+    @State var todos: [ItemModel] = [
+        ItemModel(title: "What is your goal?")
+        ,ItemModel(title: "Let's Write")
+    ]
     
     var body: some View {
         List{
-            ForEach(todos, id: \.self){ todo in
-                ListRowView(todoTitle: todo)
+            ForEach(todos){ todo in
+                ListRowView(todo: todo)
             }
         }
             .padding(.top, 5)
-            .background(Color("navbarColor"))
-        //navbar의 바로 윗줄 코드 백그라운드를 주석처리하면 패딩까지 같이 없어진다 왜지?
+          //  .background(Color("navbarColor"))
+            .listStyle(PlainListStyle())
 
         .navigationTitle("Todo List")
             .toolbarBackground(.visible, for: .navigationBar)

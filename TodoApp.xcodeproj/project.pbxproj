@@ -12,6 +12,7 @@
 		FA5B5DBF29CB7375003FF034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5B5DBE29CB7375003FF034 /* Assets.xcassets */; };
 		FA5B5DC229CB7375003FF034 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5B5DC129CB7375003FF034 /* Preview Assets.xcassets */; };
 		FA919ACC29DF4A7800E6C53C /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA919ACB29DF4A7800E6C53C /* ListRowView.swift */; };
+		FA919ACE29DF6C6100E6C53C /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA919ACD29DF6C6100E6C53C /* AddTodoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		FA5B5DBE29CB7375003FF034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5B5DC129CB7375003FF034 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA919ACB29DF4A7800E6C53C /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		FA919ACD29DF6C6100E6C53C /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5B5DBA29CB7370003FF034 /* TodoApp.swift */,
+				FAFCCCCF29E1F0A800134DDA /* Model */,
 				FA919ACA29DF4A0800E6C53C /* View */,
 				FA5B5DBE29CB7375003FF034 /* Assets.xcassets */,
 				FA5B5DC029CB7375003FF034 /* Preview Content */,
@@ -74,8 +77,16 @@
 			children = (
 				FA5B5DBC29CB7370003FF034 /* LIstView.swift */,
 				FA919ACB29DF4A7800E6C53C /* ListRowView.swift */,
+				FA919ACD29DF6C6100E6C53C /* AddTodoView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FAFCCCCF29E1F0A800134DDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +161,7 @@
 			files = (
 				FA5B5DBD29CB7370003FF034 /* LIstView.swift in Sources */,
 				FA5B5DBB29CB7370003FF034 /* TodoApp.swift in Sources */,
+				FA919ACE29DF6C6100E6C53C /* AddTodoView.swift in Sources */,
 				FA919ACC29DF4A7800E6C53C /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

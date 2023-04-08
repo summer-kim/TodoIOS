@@ -22,7 +22,7 @@ import SwiftUI
 struct TodoAppApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationView {
                 ListView()
             }
         }

@@ -19,40 +19,32 @@ struct ListView: View {
         }
             .padding(.top, 5)
             .background(Color("navbarColor"))
+        //navbar의 바로 윗줄 코드 백그라운드를 주석처리하면 패딩까지 같이 없어진다 왜지?
 
         .navigationTitle("Todo List")
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbarBackground(Color("navbarColor"), for: .navigationBar)
-            .toolbar{
-                Button {
-                    print("dd")
-                } label: {
-                    Image(systemName: "scissors")
-                        .font(.system(size: 15))
-                        .scaledToFit()
-                        .frame(width: 17)
-                }
-                
-                Button {
-                    print("dd")
+  
+        .navigationBarItems(
+            leading: EditButton()
+            ,trailing:
+                NavigationLink {
+                    AddTodoView()
                 } label: {
                     Image(systemName: "plus.circle" )
                         .frame(width: 17)
                         .scaledToFit()
                         .padding(.trailing, 10)
 
-
                 }
-
-            }
-
+        )        
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack{
+        NavigationView{
             ListView()
         }
     }

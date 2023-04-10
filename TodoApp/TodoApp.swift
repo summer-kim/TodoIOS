@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 /*
  
  MVVM Architecture
@@ -20,11 +19,16 @@ import SwiftUI
 
 @main
 struct TodoAppApp: App {
+    
+    @StateObject var todoViewModel: TodoModel = TodoModel(Todos: [])
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 ListView()
             }
+            .environmentObject(todoViewModel)
         }
+        
     }
 }

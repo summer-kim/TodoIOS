@@ -9,16 +9,15 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var todos: [ItemModel] = [
-        ItemModel(title: "What is your goal?")
-        ,ItemModel(title: "Let's Write")
-    ]
+    @EnvironmentObject var todos: TodoModel
     
     var body: some View {
         List{
-            ForEach(todos){ todo in
+            ForEach(todos.Todos){ todo in
                 ListRowView(todo: todo)
             }
+            .onDelete(perform: todos.deleteTodo)
+            .onMove(perform: todos.moveTodo)
         }
             .padding(.top, 5)
           //  .background(Color("navbarColor"))
@@ -43,12 +42,17 @@ struct ListView: View {
                 }
         )        
     }
+    
+                      
+
 }
 
 struct ListView_Previews: PreviewProvider {
+    
     static var previews: some View {
         NavigationView{
             ListView()
         }
+        .environmentObject(TodoModel(Todos: []))
     }
 }

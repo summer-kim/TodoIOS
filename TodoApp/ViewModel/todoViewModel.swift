@@ -30,4 +30,9 @@ class TodoModel: ObservableObject {
     func moveTodo(IndexSet:IndexSet, to:Int){
          Todos.move(fromOffsets: IndexSet, toOffset: to)
      }
+    
+    func addTodo(title: String){
+        let newTodo = ItemModel(title: title, solved: false)
+        Todos.append(newTodo)
+    }
 }

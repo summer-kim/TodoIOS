@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddTodoView: View {
     
+    @EnvironmentObject var todos: TodoModel
+    @Environment(\.dismiss) var dismiss
     @State var TextFieldVar: String = ""
     
     var body: some View {
@@ -20,9 +22,8 @@ struct AddTodoView: View {
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(12)
                 
-                Button {
-                    
-                } label: {
+                Button( action: addTodoFunc,
+                label: {
                     Text("save".uppercased())
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -30,7 +31,7 @@ struct AddTodoView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(12)
 
-                }
+                })
 
             }.padding(14)
         }
@@ -40,12 +41,19 @@ struct AddTodoView: View {
                 .toolbarBackground(Color("navbarColor") ,for: .navigationBar)
       
     }
+    
+    func addTodoFunc(){
+        todos.addTodo(title: TextFieldVar)
+        dismiss()
+    }
+    
+    
 }
 
 struct AddTodoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             AddTodoView()
-        }
+        }.environmentObject(TodoModel(Todos: []))
     }
 }

@@ -35,4 +35,15 @@ class TodoModel: ObservableObject {
         let newTodo = ItemModel(title: title, solved: false)
         Todos.append(newTodo)
     }
+    
+    func checkTodo(todo: ItemModel){
+        //        if let indexNum = Todos.firstIndex(where: { (item) -> Bool in
+        //            return todo.id == item.id
+        //        }){
+        //            run this code
+        //        }
+        if let indexNum = Todos.firstIndex(where: {$0.id == todo.id}){
+            Todos[indexNum] = ItemModel(title: todo.title, solved: !todo.solved)
+        }
+    }
 }

@@ -15,6 +15,11 @@ struct ListView: View {
         List{
             ForEach(todos.Todos){ todo in
                 ListRowView(todo: todo)
+                    .onTapGesture {
+                        withAnimation(.easeIn){
+                            todos.checkTodo(todo: todo)
+                        }
+                    }
             }
             .onDelete(perform: todos.deleteTodo)
             .onMove(perform: todos.moveTodo)
@@ -48,7 +53,6 @@ struct ListView: View {
 }
 
 struct ListView_Previews: PreviewProvider {
-    
     static var previews: some View {
         NavigationView{
             ListView()

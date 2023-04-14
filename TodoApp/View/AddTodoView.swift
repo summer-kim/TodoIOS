@@ -13,6 +13,9 @@ struct AddTodoView: View {
     @Environment(\.dismiss) var dismiss
     @State var TextFieldVar: String = ""
     
+    @State var alertMessage: String = ""
+    @State var alertIsOn: Bool = false
+    
     var body: some View {
         ScrollView{
             VStack(spacing: 10){
@@ -39,12 +42,28 @@ struct AddTodoView: View {
                 .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .toolbarBackground(Color("navbarColor") ,for: .navigationBar)
+            .alert(isPresented: $alertIsOn, content: getAlert)
       
     }
     
     func addTodoFunc(){
-        todos.addTodo(title: TextFieldVar)
-        dismiss()
+        if isAppropriate() {
+            todos.addTodo(title: TextFieldVar)
+            dismiss()
+        }
+    }
+    
+    func isAppropriate() ->Bool{
+        if TextFieldVar.count < 3{
+            alertMessage = "Write more than 3 characters!💖"
+            alertIsOn = true
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertMessage))
     }
     
     

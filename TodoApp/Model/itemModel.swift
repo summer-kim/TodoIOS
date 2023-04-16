@@ -8,7 +8,17 @@
 import Foundation
 
 struct ItemModel: Identifiable {
-    let id: String = UUID().uuidString
+    let id: String
     let title: String
-    var solved: Bool = false
+    let solved: Bool
+    
+    init(id: String = UUID().uuidString, title: String, solved: Bool) {
+        self.id = id
+        self.title = title
+        self.solved = solved
+    }
+    
+    func updateTodo() -> ItemModel {
+        return ItemModel(id: id, title: title, solved: !solved)
+    }
 }

@@ -17,7 +17,7 @@ class TodoModel: ObservableObject {
     
     func getTodo() {
         let todoSample: [ItemModel] = [
-            ItemModel(title: "What is your Goal?")
+            ItemModel(title: "What is your Goal?", solved: false)
             ,ItemModel(title: "This is solved", solved: true)
         ]
         Todos.append(contentsOf: todoSample)
@@ -43,7 +43,7 @@ class TodoModel: ObservableObject {
         //            run this code
         //        }
         if let indexNum = Todos.firstIndex(where: {$0.id == todo.id}){
-            Todos[indexNum] = ItemModel(title: todo.title, solved: !todo.solved)
+            Todos[indexNum] = todo.updateTodo()
         }
     }
 }

@@ -26,7 +26,7 @@ struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
             ListRowView(todo: ItemModel(title: "This is firstTodo", solved: true))
-            ListRowView(todo: ItemModel(title: "This is secondTodo"))
+            ListRowView(todo: ItemModel(title: "This is secondTodo", solved: false))
         }
        // .previewLayout(.sizeThatFits)
 

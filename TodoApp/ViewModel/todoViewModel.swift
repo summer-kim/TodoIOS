@@ -9,18 +9,31 @@ import Foundation
 
 class TodoModel: ObservableObject {
     
-    @Published var Todos: [ItemModel] = []
+    @Published var Todos: [ItemModel] = []{
+        didSet{
+            saveTodo()
+        }
+    }
+    let secretKey: String = "secretKey"
     
     init(Todos: [ItemModel]) {
         getTodo()
     }
     
+    
+    
     func getTodo() {
-        let todoSample: [ItemModel] = [
-            ItemModel(title: "What is your Goal?", solved: false)
-            ,ItemModel(title: "This is solved", solved: true)
-        ]
-        Todos.append(contentsOf: todoSample)
+//        let todoSample: [ItemModel] = [
+//            ItemModel(title: "What is your Goal?", solved: false)
+//            ,ItemModel(title: "This is solved", solved: true)
+//        ]
+//        Todos.append(contentsOf: todoSample)
+        guard
+            let data = UserDefaults.standard.data(forKey: secretKey),
+            let savedTodo = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else { return }
+        
+        self.Todos = savedTodo
     }
     
     func deleteTodo(IndexSet: IndexSet) {
@@ -44,6 +57,12 @@ class TodoModel: ObservableObject {
         //        }
         if let indexNum = Todos.firstIndex(where: {$0.id == todo.id}){
             Todos[indexNum] = todo.updateTodo()
+        }
+    }
+    
+    func saveTodo(){
+        if let encodedData = try? JSONEncoder().encode(Todos){
+            UserDefaults.standard.set(encodedData, forKey: secretKey)
         }
     }
 }
